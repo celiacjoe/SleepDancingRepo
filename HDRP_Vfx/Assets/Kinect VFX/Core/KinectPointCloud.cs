@@ -104,7 +104,7 @@ namespace KinectVfx
                                 PointCloudBaker.SetFloat("BaseDepth", baseDepth);
                                 PointCloudBaker.SetBuffer(bakeDepthKernel, "PositionBuffer", positionBuffer);
                                 PointCloudBaker.SetTexture(bakeDepthKernel, "PositionTexture", tempPositionTexture);
-                                PointCloudBaker.Dispatch(bakeDepthKernel, depthFrameWidth / 8, depthFrameHeight / 8, 1);
+                                PointCloudBaker.Dispatch(bakeDepthKernel, depthFrameWidth / 4, depthFrameHeight / 4, 1);
                             }
 
                             Graphics.CopyTexture(tempPositionTexture, PointCloudMap);
