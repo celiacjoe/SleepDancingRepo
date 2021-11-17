@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SCN_SimplePC.unity
-    guid: 51b8948b60a648d4692a4cd974bd6d57
+    path: Assets/Scenes/Texture.unity
+    guid: 062d42da4381bc24d8b7548498210920
   m_configObjects: {}
