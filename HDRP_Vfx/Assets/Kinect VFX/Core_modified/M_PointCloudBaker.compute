@@ -29,7 +29,7 @@ void BakeDepth(uint3 id : SV_DispatchThreadID)
 	ray *= depth / BaseDepth;
 	//ray.z -= 1500.;
 	//PositionTexture[id.xy] = float4(ray * 0.0001, 1.0); // modif Louis
-	PositionTexture[id.xy] = float4(ray * 0.001, 1.0);
+	PositionTexture[id.xy] = float4(ray * 0.01, 1.0);
 }
 
 [numthreads(8, 8, 1)]
