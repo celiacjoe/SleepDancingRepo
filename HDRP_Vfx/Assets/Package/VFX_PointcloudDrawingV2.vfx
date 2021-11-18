@@ -718,7 +718,7 @@ VisualEffectResource:
       = 0u;\n\t\t\t    GPUEventRate_1( /*inout */attributes.rateCount_d,  /*inout
       */attributes.eventCount, (float)150000, deltaTime_a);\n\t\t\t    eventCount_a
       += attributes.eventCount;\n\t\t\t}\n\t\t\t{\n\t\t\t    KillAABox_1(attributes.position, 
-      /*inout */attributes.alive, float3(0, 0, 0.709999979), float3(2, 2, 2));\n\t\t\t}\n\t\t\tEulerIntegration(
+      /*inout */attributes.alive, float3(0, 0, 3.67000008), float3(4, 4, 4));\n\t\t\t}\n\t\t\tEulerIntegration(
       /*inout */attributes.position, attributes.velocity, deltaTime_a);\n\t\t\tAge(
       /*inout */attributes.age, deltaTime_a);\n\t\t\tReap(attributes.age, attributes.lifetime, 
       /*inout */attributes.alive);\n\t\t\t\n\r\n\r\n\t\t\tif (attributes.alive)\r\n\t\t\t{\r\n\t\t\t\tattributeBuffer.Store3((index
@@ -761,7 +761,7 @@ VisualEffectResource:
       attributes.eventCount = 0u;\n\t\t    GPUEventRate_1( /*inout */attributes.rateCount_d, 
       /*inout */attributes.eventCount, (float)150000, deltaTime_a);\n\t\t    eventCount_a
       += attributes.eventCount;\n\t\t}\n\t\t{\n\t\t    KillAABox_1(attributes.position, 
-      /*inout */attributes.alive, float3(0, 0, 0.709999979), float3(2, 2, 2));\n\t\t}\n\t\tEulerIntegration(
+      /*inout */attributes.alive, float3(0, 0, 3.67000008), float3(4, 4, 4));\n\t\t}\n\t\tEulerIntegration(
       /*inout */attributes.position, attributes.velocity, deltaTime_a);\n\t\tAge(
       /*inout */attributes.age, deltaTime_a);\n\t\tReap(attributes.age, attributes.lifetime, 
       /*inout */attributes.alive);\n\t\t\n\r\n\t\tattributeBuffer.Store3((index *
@@ -3066,9 +3066,9 @@ VisualEffectResource:
         - m_ExpressionIndex: 67
           m_Value: {x: 6, y: 6, z: 2}
         - m_ExpressionIndex: 78
-          m_Value: {x: 0, y: 0, z: 0.71}
+          m_Value: {x: 0, y: 0, z: 3.67}
         - m_ExpressionIndex: 79
-          m_Value: {x: 2, y: 2, z: 2}
+          m_Value: {x: 4, y: 4, z: 4}
       m_Vector4f:
         m_Array: []
       m_Uint:
@@ -32016,7 +32016,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.AABox, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"center":{"x":0.0,"y":0.0,"z":0.7099999785423279},"size":{"x":2.0,"y":2.0,"z":2.0}}'
+      m_SerializableObject: '{"center":{"x":0.0,"y":0.0,"z":3.6700000762939455},"size":{"x":4.0,"y":4.0,"z":4.0}}'
     m_Space: 0
   m_Property:
     name: box
@@ -32315,27 +32315,3 @@ MonoBehaviour:
     attributes: []
   m_Direction: 0
   m_LinkedSlots: []
---- !u!114 &8926484042661616228
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d78581a96eae8bf4398c282eb0b098bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Parent: {fileID: 0}
-  m_Children: []
-  m_UIPosition: {x: 0, y: 0}
-  m_UICollapsed: 1
-  m_UISuperCollapsed: 0
-  title: 
-  m_Owners: []
-  dataType: 0
-  capacity: 128
-  stripCapacity: 16
-  particlePerStripCount: 16
-  m_Space: 0
