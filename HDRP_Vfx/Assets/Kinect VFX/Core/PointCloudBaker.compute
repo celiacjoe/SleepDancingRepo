@@ -27,7 +27,7 @@ void BakeDepth(uint3 id : SV_DispatchThreadID)
 	//float3 ray = float3(abs(((float)id.x - (MapDimensions.x * 0.5)) * 0.5),abs( ((float)id.y - (MapDimensions.y * 0.5)) * -0.5), BaseDepth); //Modif Louis
 	float3 ray = float3((((float)id.x - (MapDimensions.x * 0.5)) * 0.5), (((float)id.y - (MapDimensions.y * 0.5)) * -0.5), BaseDepth);
 	ray *= depth / BaseDepth;
-	//ray.z -= 1500.;
+	ray.z -= 1100.;
 	//PositionTexture[id.xy] =clamp( float4(ray * 0.0002, 1.0),0.,1.); // modif Louis
 	PositionTexture[id.xy] = float4(ray * 0.001, 1.0);
 }

@@ -1070,7 +1070,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 24
+  field of view: 38
   orthographic: 0
   orthographic size: 1
   m_Depth: -1
@@ -2820,8 +2820,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5fa5173c224d554b8ea338d301565d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AC_Cam: {fileID: 2121991287}
-  Cam: {fileID: 660584049}
+  AC_Cam01: {fileID: 0}
+  AC_Cam02: {fileID: 0}
+  Cam01: {fileID: 0}
+  Cam02: {fileID: 0}
+  BCam01: 0
 --- !u!1 &2143054526
 GameObject:
   m_ObjectHideFlags: 0

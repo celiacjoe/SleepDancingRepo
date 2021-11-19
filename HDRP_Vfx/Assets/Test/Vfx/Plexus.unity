@@ -251,12 +251,6 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 2093891221272343769, guid: 4c1725a245d4eb26e95869a7eaafe2da, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4c1725a245d4eb26e95869a7eaafe2da, type: 3}
---- !u!95 &307328738 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 7573568780976345824, guid: 4c1725a245d4eb26e95869a7eaafe2da,
-    type: 3}
-  m_PrefabInstance: {fileID: 307328737}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &407842558 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1933265323840245561, guid: ff4722f04736a044987e031761a22e8d,
@@ -350,7 +344,6 @@ VFXRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 0}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -389,8 +382,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5fa5173c224d554b8ea338d301565d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AC_Cam: {fileID: 307328738}
-  Cam: {fileID: 1533391879}
+  AC_Cam01: {fileID: 0}
+  AC_Cam02: {fileID: 0}
+  Cam01: {fileID: 0}
+  Cam02: {fileID: 0}
+  BCam01: 0
 --- !u!1001 &947537712
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -554,12 +550,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff4722f04736a044987e031761a22e8d, type: 3}
---- !u!20 &1533391879 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 2093891220889238979, guid: 4c1725a245d4eb26e95869a7eaafe2da,
-    type: 3}
-  m_PrefabInstance: {fileID: 307328737}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1646330487
 GameObject:
   m_ObjectHideFlags: 0
@@ -596,7 +586,6 @@ VFXRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0

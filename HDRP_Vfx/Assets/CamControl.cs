@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class CamControl : MonoBehaviour
 {
-    public Animator AC_Cam;
-    public Camera Cam;
+    public Animator AC_Cam01;
+    public Animator AC_Cam02;
+    public GameObject Cam01;
+    public GameObject Cam02;
+    public bool BCam01;
+   // public bool BCam02;
+
     void Start()
     {
 
@@ -16,25 +21,51 @@ public class CamControl : MonoBehaviour
     {
         if (Input.GetKeyDown("h"))
         {
-            AC_Cam.SetTrigger("RotationHorizontal");
+            AC_Cam01.SetTrigger("RotationHorizontal");
+            AC_Cam02.SetTrigger("RotationHorizontal");
         }
         if (Input.GetKeyDown("v"))
         {
             Debug.Log("verticalok");
-            AC_Cam.SetTrigger("RotationVertical");
+            AC_Cam01.SetTrigger("RotationVertical");
+            AC_Cam02.SetTrigger("RotationVertical");
         }
         if (Input.GetKeyDown("t"))
         {
-            AC_Cam.SetTrigger("Througt");
+            AC_Cam01.SetTrigger("Througt");
+            AC_Cam02.SetTrigger("Througt");
         }
 
+        if (Input.GetKeyDown("s"))
+        {
+            if (BCam01)
+            {
+                BCam01 = false;
+                Cam01.SetActive(false);
+                Cam02.SetActive(true);
+            }
+            else
+            {
+                BCam01 = true;
+                Cam01.SetActive(true);
+                Cam02.SetActive(false);
+            }
+
+        }
+
+
+
+
+
+
+        ///// OLD STUFF 
         if (Input.GetKeyDown("o"))
         {
-            Cam.orthographic = true;
+            //Cam01.camera.orthographic = true;
         }
         if (Input.GetKeyDown("p"))
         {
-            Cam.orthographic = false;
+           // Cam01.orthographic = false;
         }
     }
 }
