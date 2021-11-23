@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SCN_PCTrail.unity
-    guid: 5bd01e9ccd2428c488a7d2709b4a4d82
+    path: Assets/Scenes/SCN_SetupControll 1.unity
+    guid: 46e5641e23b5ff84ca3ae6e00b9fadb6
   m_configObjects: {}

@@ -124,15 +124,15 @@ namespace OscSimpl.Examples
             float f2;
             if (message.TryGet(0, out f1) && message.TryGet(1, out f2))
             {
-                PosXY.x = map(f1, 0, 1, -3.5f, 3.5f); 
-                PosXY.y = map(f2, 0, 1, -3.5f, 3.5f);
+                PosXY.x = map(f1, 0, 1, -6f, 6f); 
+                PosXY.y = map(f2, 0, 1, -6f, 6f);
             }
             OscPool.Recycle(message);        
         }
 
         void EventHauteurZ( float value )
 		{
-            PosZ = map(value, 0, 1, -2, 4);
+            PosZ = map(value, 0, 1, -2.5f, 5);
 		}
 
         void EventFOV(float value)
