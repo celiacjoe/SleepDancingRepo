@@ -1269,11 +1269,10 @@ VisualEffectResource:
       float tmp_bb = attributes.age / attributes.lifetime;\n\t\t\t\t    float tmp_bc
       = (float)1 - tmp_bb;\n\t\t\t\t    float3 tmp_bd = float3(tmp_bc, tmp_bc, tmp_bc);\n\t\t\t\t   
       SetAttribute_545F0ED( /*inout */attributes.color, tmp_bd);\n\t\t\t\t}\n\t\t\t\t{\n\t\t\t\t   
-      float tmp_bb = attributes.age / attributes.lifetime;\n\t\t\t\t    float tmp_bd
-      = max(tmp_bb, (float)0);\n\t\t\t\t    float tmp_bf = min(tmp_bd, (float)1);\n\t\t\t\t   
-      SetAttribute_18B2FD0( /*inout */attributes.color, float3(0, 0, 0), tmp_bf);\n\t\t\t\t}\n\t\t\t\t{\n\t\t\t\t   
-      AttributeFromCurve_5723D187( /*inout */attributes.scaleY, attributes.velocity,
-      Scale_e, float2(0, 3.33333325));\n\t\t\t\t}\n\t\t\t\t\n\n\t\t\t\t\n\t\t\t#if
+      float tmp_bb = attributes.age / attributes.lifetime;\n\t\t\t\t    float tmp_bc
+      = saturate(tmp_bb);\n\t\t\t\t    SetAttribute_18B2FD0( /*inout */attributes.color,
+      float3(0, 0, 0), tmp_bc);\n\t\t\t\t}\n\t\t\t\t{\n\t\t\t\t    AttributeFromCurve_5723D187(
+      /*inout */attributes.scaleY, attributes.velocity, Scale_e, float2(0, 3.33333325));\n\t\t\t\t}\n\t\t\t\t\n\n\t\t\t\t\n\t\t\t#if
       !HAS_STRIPS\n\t\t\t\tif (!attributes.alive)\n\t\t\t\t\treturn o;\n\t\t\t#endif\n\t\t\t\t\n\t\t\t#if
       VFX_PRIMITIVE_QUAD\n\t\t\t\n\t\t\t#if HAS_STRIPS\n\t\t\t#if VFX_STRIPS_UV_STRECHED\n\t\t\t\to.VFX_VARYING_UV.x
       = (float)(currentIndex) / (stripData.nextIndex - 1);\n\t\t\t#elif VFX_STRIPS_UV_PER_SEGMENT\n\t\t\t\to.VFX_VARYING_UV.x
@@ -1490,11 +1489,10 @@ VisualEffectResource:
       float tmp_bb = attributes.age / attributes.lifetime;\n\t\t\t\t    float tmp_bc
       = (float)1 - tmp_bb;\n\t\t\t\t    float3 tmp_bd = float3(tmp_bc, tmp_bc, tmp_bc);\n\t\t\t\t   
       SetAttribute_545F0ED( /*inout */attributes.color, tmp_bd);\n\t\t\t\t}\n\t\t\t\t{\n\t\t\t\t   
-      float tmp_bb = attributes.age / attributes.lifetime;\n\t\t\t\t    float tmp_bd
-      = max(tmp_bb, (float)0);\n\t\t\t\t    float tmp_bf = min(tmp_bd, (float)1);\n\t\t\t\t   
-      SetAttribute_18B2FD0( /*inout */attributes.color, float3(0, 0, 0), tmp_bf);\n\t\t\t\t}\n\t\t\t\t{\n\t\t\t\t   
-      AttributeFromCurve_5723D187( /*inout */attributes.scaleY, attributes.velocity,
-      Scale_e, float2(0, 3.33333325));\n\t\t\t\t}\n\t\t\t\t\n\n\t\t\t\t\n\t\t\t#if
+      float tmp_bb = attributes.age / attributes.lifetime;\n\t\t\t\t    float tmp_bc
+      = saturate(tmp_bb);\n\t\t\t\t    SetAttribute_18B2FD0( /*inout */attributes.color,
+      float3(0, 0, 0), tmp_bc);\n\t\t\t\t}\n\t\t\t\t{\n\t\t\t\t    AttributeFromCurve_5723D187(
+      /*inout */attributes.scaleY, attributes.velocity, Scale_e, float2(0, 3.33333325));\n\t\t\t\t}\n\t\t\t\t\n\n\t\t\t\t\n\t\t\t#if
       !HAS_STRIPS\n\t\t\t\tif (!attributes.alive)\n\t\t\t\t\treturn o;\n\t\t\t#endif\n\t\t\t\t\n\t\t\t#if
       VFX_PRIMITIVE_QUAD\n\t\t\t\n\t\t\t#if HAS_STRIPS\n\t\t\t#if VFX_STRIPS_UV_STRECHED\n\t\t\t\to.VFX_VARYING_UV.x
       = (float)(currentIndex) / (stripData.nextIndex - 1);\n\t\t\t#elif VFX_STRIPS_UV_PER_SEGMENT\n\t\t\t\to.VFX_VARYING_UV.x
