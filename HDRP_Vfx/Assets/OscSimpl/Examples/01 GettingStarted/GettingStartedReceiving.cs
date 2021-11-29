@@ -16,9 +16,22 @@ namespace OscSimpl.Examples
 
         /// ----- CAM Controll
         public GameObject CameraPers;
+        public GameObject CameraPersTop2;
+        public GameObject CameraPersBot3;
         public GameObject CameraPersTop;
+
+        public Transform target;
         //public GameObject CameraOrtho;
         public Animator AC;
+
+        public float Velocity = 0;
+        private Vector3 velocity = Vector3.zero;
+        private Vector3 velocityPC = Vector3.zero;
+        private float velocityFOV = 0.0f;
+        private float velocityCamRot = 0.0f;
+        public float SmoothTime = 0.3f;
+        public float SmoothRot ;
+        public float SmoothRotFX ;
 
         public string Map_CamPositionXY ;
         public Vector2 PosXY;        
@@ -64,6 +77,7 @@ namespace OscSimpl.Examples
         //     public float radius;
         public string Map_PointcloudPosXY;
         public Vector2 PointCloudPosXY;
+        public GameObject PC;
 
         public string Map_MaxParticles;
         public string MAP_Color;
@@ -99,10 +113,38 @@ namespace OscSimpl.Examples
 
         void Update()
         {
-          //  CameraOrtho.transform.position = new Vector3(PosXY.x, PosZ, PosXY.y);
-            CameraPers.transform.position = new Vector3(PosXY.x, PosZ, PosXY.y);
-            CameraPersTop.transform.position = new Vector3(PosXY.x, PosZ, PosXY.y);
+            Vector3 targetPositionCam = new Vector3(PosXY.x, PosZ, PosXY.y);
+            CameraPers.transform.position = Vector3.SmoothDamp(CameraPers.transform.position, targetPositionCam, ref velocity, SmoothTime);
+            CameraPersTop2.transform.position = Vector3.SmoothDamp(CameraPers.transform.position, targetPositionCam, ref velocity, SmoothTime);
+            CameraPersBot3.transform.position = Vector3.SmoothDamp(CameraPers.transform.position, targetPositionCam, ref velocity, SmoothTime);
+            CameraPersTop.transform.position = Vector3.SmoothDamp(CameraPers.transform.position, targetPositionCam, ref velocity, SmoothTime);
             // CameraPers.transform.localRotation = Quaternion.Euler(0, CamRotationValue, 0);
+            Vector3 targetPositionPC = new Vector3(PointCloudPosXY.x, 0, PointCloudPosXY.y);
+            PC.transform.position = Vector3.SmoothDamp(PC.transform.position, targetPositionPC, ref velocityPC, SmoothTime);
+
+            Camera CamPers = CameraPers.GetComponent<Camera>();
+            float newFOV = Mathf.SmoothDamp(CamPers.fieldOfView, FOV_Pers, ref velocityFOV, SmoothTime);
+            CamPers.fieldOfView = newFOV;
+            Camera CamPersTop2 = CameraPersTop2.GetComponent<Camera>();
+            CamPersTop2.fieldOfView = newFOV;
+            Camera CamPersbot3 = CameraPersBot3.GetComponent<Camera>();
+            CamPersTop2.fieldOfView = newFOV;
+            Camera CamPersTop = CameraPersTop.GetComponent<Camera>();
+            CamPersTop.fieldOfView = newFOV;
+
+            //  float newCamRotationValue = Mathf.SmoothDamp(CameraPers.transform.rotation.y, CamRotationValue, ref velocityCamRot, SmoothTime);
+            Quaternion Rotationtarget = Quaternion.Euler(0, CamRotationValue, 0);
+            CameraPers.transform.rotation = Quaternion.Slerp(CameraPers.transform.rotation, Rotationtarget, Time.deltaTime * SmoothRot);
+            Quaternion Rotationtarget2 = Quaternion.Euler(30, CamRotationValue, 0);
+            CameraPersTop2.transform.rotation = Quaternion.Slerp(CameraPersTop2.transform.rotation, Rotationtarget2, Time.deltaTime * SmoothRot);
+            Quaternion Rotationtarget3 = Quaternion.Euler(-15, CamRotationValue, 0);
+            CameraPersBot3.transform.rotation = Quaternion.Slerp(CameraPersBot3.transform.rotation, Rotationtarget3, Time.deltaTime * SmoothRot);
+            Quaternion Rotationtarget4 = Quaternion.Euler(0, 0, CamRotationValue);
+            CameraPersTop.transform.rotation = Quaternion.Slerp(CameraPersTop.transform.rotation, Rotationtarget4, Time.deltaTime * SmoothRot);
+
+            Quaternion RotationFXtarget = Quaternion.Euler(0, FXRotationValue, 0);
+            CenterRotation.transform.rotation = Quaternion.Slerp(CenterRotation.transform.rotation, RotationFXtarget, Time.deltaTime * SmoothRotFX);
+
         }
 
         void OnEnable()
@@ -112,8 +154,8 @@ namespace OscSimpl.Examples
             _oscIn.MapFloat(Map_SlideFOV, EventFOV);                // Cam FOV
             _oscIn.MapFloat(Map_EncodRotateCam, EventCamRotation);  // Cam Rotation
             _oscIn.MapFloat(Map_B1, EventAnim1);                    // ChangeAnim1
-            _oscIn.MapFloat(Map_B1, EventAnim2);                    // ChangeAnim2
-           // _oscIn.MapFloat(Map_B1, EventAnim3);                    // ChangeAnim3
+            _oscIn.MapFloat(Map_B2, EventAnim2);                    // ChangeAnim2
+            _oscIn.MapFloat(Map_B3, EventAnim3);                    // ChangeAnim3
             _oscIn.MapInt(Map_Radio, EventChangeCam);               // ChangeCam
 
             _oscIn.MapFloat(Map_EncodRotateFX, EventFXRotation);    // FX Rotation
@@ -124,13 +166,13 @@ namespace OscSimpl.Examples
             _oscIn.MapFloat(Map_Change3, EventFX3);                 // FX Param03
             _oscIn.MapFloat(Map_Change4, EventFX4);                 // FX Param04
             _oscIn.MapFloat(Map_Change5, EventFX5);                 // FX Param05
-           // _oscIn.MapFloat(Map_Change6, EventFX6);                 // FX Param06
+            // _oscIn.MapFloat(Map_Change6, EventFX6);                 // FX Param06
 
             _oscIn.MapFloat(Map_KBPosX, EventKBposX);               // debug KB posX
             _oscIn.MapFloat(Map_KBPosY, EventKBposY);               // debug KB posY
             _oscIn.MapFloat(Map_KBradius, EventKBradius);           // debug KB radius
 
-            _oscIn.Map(Map_PointcloudPosXY,EventPosXY);          // debug PC Position
+            _oscIn.Map(Map_PointcloudPosXY,EventPointCloudPosXY);          // debug PC Position
 
             _oscIn.MapFloat(Map_ChangeDebug1, EventDebug1);         // Debug Param01
             _oscIn.MapFloat(Map_ChangeDebug2, EventDebug2);
@@ -155,32 +197,23 @@ namespace OscSimpl.Examples
 
         void EventHauteurZ( float value )
 		{
-            PosZ = map(value, 0, 1, -2.5f, 5);
+            PosZ = map(value, 0, 1, -3f, 7);
 		}
 
         void EventFOV(float value)
         {           
            // FOV_Ortho = map(value,0,1,0.2f,4);
-            FOV_Pers = map(value, 0, 1, 20, 100);
-           // Camera CamOrtho = CameraOrtho.GetComponent<Camera>();
-         //   CamOrtho.fieldOfView = FOV_Ortho;
-            Camera CamPers = CameraPers.GetComponent<Camera>();
-            CamPers.fieldOfView = FOV_Pers;
-            Camera CamPersTop = CameraPersTop.GetComponent<Camera>();
-            CamPersTop.fieldOfView = FOV_Pers;
+            FOV_Pers = map(value, 0, 1, 30, 90);
         }
 
         void EventCamRotation(float value)
         {
             CamRotationValue = map(value, 0, 1, 0, 360 );
-            CameraPers.transform.localRotation = Quaternion.Euler(0, CamRotationValue , 0);
-            CameraPersTop.transform.localRotation = Quaternion.Euler(0, CamRotationValue, 0);
         }
 
         void EventFXRotation(float value)
         {
             FXRotationValue = map(value, 0, 1, 0, 360);
-            CenterRotation.transform.localRotation = Quaternion.Euler(0, FXRotationValue, 0);
         }
 
         void EventAnim1(float value)
@@ -199,18 +232,38 @@ namespace OscSimpl.Examples
             }
         }
 
+        void EventAnim3(float value)
+        {
+            if (value == 1)
+            {
+                Animator AC_CamMovement = CenterRotation.GetComponent<Animator>();
+                AC.SetTrigger("travers");
+            }
+        }
+
         void EventChangeCam(int value)
         {
-                if (value == 0) {
-                    CameraPersTop.SetActive(false);
-                    CameraPers.SetActive(true);                 
-                } else if (value == 1) {
-                    CameraPersTop.SetActive(true);
-                    CameraPers.SetActive(false);
+             if (value == 0) {
+                CameraPersTop.SetActive(true);
+                CameraPersBot3.SetActive(false);
+                CameraPersTop2.SetActive(false);
+                CameraPers.SetActive(false);
+            } else if (value == 1) {
+                CameraPersTop.SetActive(false);
+                CameraPersBot3.SetActive(true);
+                CameraPersTop2.SetActive(false);
+                CameraPers.SetActive(false);
                 } else if (value == 2) {
-                } else if (value == 3) {
-                } else if (value == 4) {
-                }
+                CameraPersTop.SetActive(false);
+                CameraPersBot3.SetActive(false);
+                CameraPersTop2.SetActive(true);
+                CameraPers.SetActive(false);
+            } else if (value == 3) {
+                CameraPersTop.SetActive(false);
+                CameraPersBot3.SetActive(false);
+                CameraPersTop2.SetActive(false);
+                CameraPers.SetActive(true);
+            }
         }
 
         void EventFXParticles(float value)
@@ -269,15 +322,17 @@ namespace OscSimpl.Examples
             VFX.SetFloat("KB_Radius", value);
         }
 
-        void EventPointcloudPosXY(OscMessage message)
+        void EventPointCloudPosXY(OscMessage message)
         {
             float f1;
             float f2;
             if (message.TryGet(0, out f1) && message.TryGet(1, out f2))
             {
+                //  VisualEffect VFX = FX.GetComponent<VisualEffect>();
+                PointCloudPosXY.x = map(f1,0,1,-7,4);
+                PointCloudPosXY.y = map(f2, 0, 1, -7, 4);
                 VisualEffect VFX = FX.GetComponent<VisualEffect>();
-                VFX.SetFloat("KB_PosX", f1);
-                VFX.SetFloat("KB_PosY", f2);
+              //  VFX.SetFloat("PointCloudPosition", map(f2, 0, 1, -2, 2));
               //  PosXY.y = map(f2, 0, 1, -6f, 6f);
             }
             OscPool.Recycle(message);
