@@ -105,8 +105,13 @@ namespace OscSimpl.Examples
             //PosXY = new Vector2(0,0);
             //PosZ = 0;
             Nbr_portIn = _oscIn.port;
+            CameraPers.SetActive(true);
+            CameraPersTop2.SetActive(false);
+            CameraPersBot3.SetActive(false);
+            CameraPersTop.SetActive(false);
 
-			if( !_oscIn ) _oscIn = gameObject.AddComponent<OscIn>();
+
+            if ( !_oscIn ) _oscIn = gameObject.AddComponent<OscIn>();
 			_oscIn.Open( Nbr_portIn);
 
         }
@@ -135,11 +140,11 @@ namespace OscSimpl.Examples
             //  float newCamRotationValue = Mathf.SmoothDamp(CameraPers.transform.rotation.y, CamRotationValue, ref velocityCamRot, SmoothTime);
             Quaternion Rotationtarget = Quaternion.Euler(0, CamRotationValue, 0);
             CameraPers.transform.rotation = Quaternion.Slerp(CameraPers.transform.rotation, Rotationtarget, Time.deltaTime * SmoothRot);
-            Quaternion Rotationtarget2 = Quaternion.Euler(30, CamRotationValue, 0);
+            Quaternion Rotationtarget2 = Quaternion.Euler(35, CamRotationValue, 0);
             CameraPersTop2.transform.rotation = Quaternion.Slerp(CameraPersTop2.transform.rotation, Rotationtarget2, Time.deltaTime * SmoothRot);
-            Quaternion Rotationtarget3 = Quaternion.Euler(-15, CamRotationValue, 0);
+            Quaternion Rotationtarget3 = Quaternion.Euler(-20, CamRotationValue, 0);
             CameraPersBot3.transform.rotation = Quaternion.Slerp(CameraPersBot3.transform.rotation, Rotationtarget3, Time.deltaTime * SmoothRot);
-            Quaternion Rotationtarget4 = Quaternion.Euler(0, 0, CamRotationValue);
+            Quaternion Rotationtarget4 = Quaternion.Euler(90, 0, CamRotationValue);
             CameraPersTop.transform.rotation = Quaternion.Slerp(CameraPersTop.transform.rotation, Rotationtarget4, Time.deltaTime * SmoothRot);
 
             Quaternion RotationFXtarget = Quaternion.Euler(0, FXRotationValue, 0);
@@ -197,7 +202,7 @@ namespace OscSimpl.Examples
 
         void EventHauteurZ( float value )
 		{
-            PosZ = map(value, 0, 1, -3f, 7);
+            PosZ = map(value, 0, 1, -3.5f, 8);
 		}
 
         void EventFOV(float value)
