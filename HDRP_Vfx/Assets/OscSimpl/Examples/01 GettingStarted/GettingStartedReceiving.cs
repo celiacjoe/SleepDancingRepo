@@ -13,13 +13,16 @@ namespace OscSimpl.Examples
 	public class GettingStartedReceiving : MonoBehaviour
 	{
 		[SerializeField] OscIn _oscIn;
-
+        public bool SetupTop;
+        public string Map_Setup;
+       // public Quaternion RotationFXtarget;
         /// ----- CAM Controll
         public GameObject CameraPers;
         public GameObject CameraPersTop2;
         public GameObject CameraPersBot3;
         public GameObject CameraPersTop;
 
+        public GameObject SwitchSetupReference;
         public Transform target;
         //public GameObject CameraOrtho;
         public Animator AC;
@@ -58,6 +61,8 @@ namespace OscSimpl.Examples
         public string Map_FxAngle;
         public float FXAngleValue;
 
+        public string Map_SmoothRotationFX;
+
         public string Map_Particles;
         public int Particles;
 
@@ -70,13 +75,13 @@ namespace OscSimpl.Examples
 
         /// ----- debug
         public string Map_KBPosX;
-    //    public float KBposX;
         public string Map_KBPosY;
-    //    public float KBposY;
         public string Map_KBradius;
-        //     public float radius;
+
         public string Map_PointcloudPosXY;
         public Vector2 PointCloudPosXY;
+        public string Map_PointCloudPosZ;
+        public float PointCloudPosZ;
         public GameObject PC;
 
         public string Map_MaxParticles;
@@ -102,6 +107,7 @@ namespace OscSimpl.Examples
 
         void Start()
 		{
+            SetupTop = false;
             //PosXY = new Vector2(0,0);
             //PosZ = 0;
             Nbr_portIn = _oscIn.port;
@@ -110,7 +116,6 @@ namespace OscSimpl.Examples
             CameraPersBot3.SetActive(false);
             CameraPersTop.SetActive(false);
 
-
             if ( !_oscIn ) _oscIn = gameObject.AddComponent<OscIn>();
 			_oscIn.Open( Nbr_portIn);
 
@@ -118,14 +123,17 @@ namespace OscSimpl.Examples
 
         void Update()
         {
+            
             Vector3 targetPositionCam = new Vector3(PosXY.x, PosZ, PosXY.y);
             CameraPers.transform.position = Vector3.SmoothDamp(CameraPers.transform.position, targetPositionCam, ref velocity, SmoothTime);
             CameraPersTop2.transform.position = Vector3.SmoothDamp(CameraPers.transform.position, targetPositionCam, ref velocity, SmoothTime);
             CameraPersBot3.transform.position = Vector3.SmoothDamp(CameraPers.transform.position, targetPositionCam, ref velocity, SmoothTime);
             CameraPersTop.transform.position = Vector3.SmoothDamp(CameraPers.transform.position, targetPositionCam, ref velocity, SmoothTime);
             // CameraPers.transform.localRotation = Quaternion.Euler(0, CamRotationValue, 0);
-            Vector3 targetPositionPC = new Vector3(PointCloudPosXY.x, 0, PointCloudPosXY.y);
+
+            Vector3 targetPositionPC = new Vector3(PointCloudPosXY.x, PointCloudPosZ, PointCloudPosXY.y);
             PC.transform.position = Vector3.SmoothDamp(PC.transform.position, targetPositionPC, ref velocityPC, SmoothTime);
+           // PC.transform.position = Vector3.SmoothDamp(PC.transform.position.z, targetPositionPC, ref velocityPC, SmoothTime);
 
             Camera CamPers = CameraPers.GetComponent<Camera>();
             float newFOV = Mathf.SmoothDamp(CamPers.fieldOfView, FOV_Pers, ref velocityFOV, SmoothTime);
@@ -153,7 +161,9 @@ namespace OscSimpl.Examples
         }
 
         void OnEnable()
-		{          
+		{
+            _oscIn.MapFloat(Map_Setup, EventSetupChange);           // Cam hauteur
+
             _oscIn.Map(Map_CamPositionXY, EventPosXY);              // Cam position
             _oscIn.MapFloat(Map_HauteurZ, EventHauteurZ);           // Cam hauteur
             _oscIn.MapFloat(Map_SlideFOV, EventFOV);                // Cam FOV
@@ -166,6 +176,7 @@ namespace OscSimpl.Examples
             _oscIn.MapFloat(Map_EncodRotateFX, EventFXRotation);    // FX Rotation
             _oscIn.MapFloat(Map_FXrotation2, EventFXRotation);      // FX Rotation 2
             _oscIn.MapFloat(Map_Particles, EventFXParticles);       // FX In Particles
+            _oscIn.MapFloat(Map_SmoothRotationFX, EventSmooth);                 // FX smooth rotation
             _oscIn.MapFloat(Map_Change1, EventFX1);                 // FX Param01
             _oscIn.MapFloat(Map_Change2, EventFX2);                 // FX Param02
             _oscIn.MapFloat(Map_Change3, EventFX3);                 // FX Param03
@@ -173,11 +184,13 @@ namespace OscSimpl.Examples
             _oscIn.MapFloat(Map_Change5, EventFX5);                 // FX Param05
             // _oscIn.MapFloat(Map_Change6, EventFX6);                 // FX Param06
 
+
             _oscIn.MapFloat(Map_KBPosX, EventKBposX);               // debug KB posX
             _oscIn.MapFloat(Map_KBPosY, EventKBposY);               // debug KB posY
             _oscIn.MapFloat(Map_KBradius, EventKBradius);           // debug KB radius
 
-            _oscIn.Map(Map_PointcloudPosXY,EventPointCloudPosXY);          // debug PC Position
+            _oscIn.Map(Map_PointcloudPosXY,EventPointCloudPosXY);   // debug PC Position
+            _oscIn.MapFloat(Map_PointCloudPosZ, EventPointCloudPosZ);   // debug PC Position
 
             _oscIn.MapFloat(Map_ChangeDebug1, EventDebug1);         // Debug Param01
             _oscIn.MapFloat(Map_ChangeDebug2, EventDebug2);
@@ -187,6 +200,23 @@ namespace OscSimpl.Examples
 		{
 			//_oscIn.Unmap( OnTest2 );
 		}
+        void EventSetupChange(float value)
+        {
+            if (value == 1)
+            {
+                if(SetupTop == false)
+                {
+                    SetupTop = true;
+                    SwitchSetupReference.transform.localRotation = Quaternion.Euler(90, 0, 0);
+                }
+                else if (SetupTop == true)
+                {
+                    SetupTop = false;
+                    SwitchSetupReference.transform.localRotation = Quaternion.Euler(0, 0, 0);
+                }
+               
+            }
+        }
 
         void EventPosXY(OscMessage message)
         {
@@ -202,7 +232,7 @@ namespace OscSimpl.Examples
 
         void EventHauteurZ( float value )
 		{
-            PosZ = map(value, 0, 1, -3.5f, 8);
+            PosZ = map(value, 0, 1, -5f, 8);
 		}
 
         void EventFOV(float value)
@@ -220,10 +250,16 @@ namespace OscSimpl.Examples
         {
             FXRotationValue = map(value, 0, 1, 0, 360);
         }
+        
+        void EventSmooth (float value)
+        {
+            SmoothRotFX = value;
+        }
 
         void EventAnim1(float value)
         {
             if(value == 1){
+               // SmoothRotFX = 0f;
                 Animator AC_CamMovement = CenterRotation.GetComponent<Animator>();
                 AC.SetTrigger("RotationHorizontal");                  
             }
@@ -232,6 +268,7 @@ namespace OscSimpl.Examples
         void EventAnim2(float value)
         {
             if (value == 1){
+             //   SmoothRotFX = 0f;
                 Animator AC_CamMovement = CenterRotation.GetComponent<Animator>();
                 AC.SetTrigger("RotationVertical");
             }
@@ -242,7 +279,9 @@ namespace OscSimpl.Examples
             if (value == 1)
             {
                 Animator AC_CamMovement = CenterRotation.GetComponent<Animator>();
-                AC.SetTrigger("travers");
+                AC.SetTrigger("RotationZ");
+                Debug.Log("AAAAA");
+                // AC.SetTrigger("travers");
             }
         }
 
@@ -333,14 +372,16 @@ namespace OscSimpl.Examples
             float f2;
             if (message.TryGet(0, out f1) && message.TryGet(1, out f2))
             {
-                //  VisualEffect VFX = FX.GetComponent<VisualEffect>();
                 PointCloudPosXY.x = map(f1,0,1,-7,4);
                 PointCloudPosXY.y = map(f2, 0, 1, -7, 4);
-                VisualEffect VFX = FX.GetComponent<VisualEffect>();
-              //  VFX.SetFloat("PointCloudPosition", map(f2, 0, 1, -2, 2));
-              //  PosXY.y = map(f2, 0, 1, -6f, 6f);
             }
             OscPool.Recycle(message);
+        }
+
+        void EventPointCloudPosZ(float value)
+        {
+            PointCloudPosZ = map(value, 0, 1, -3, 8);
+            Debug.Log("OK PC Z");
         }
 
         void EventDebug1(float value)
