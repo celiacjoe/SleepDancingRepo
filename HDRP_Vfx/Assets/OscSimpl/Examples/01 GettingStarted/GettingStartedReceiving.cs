@@ -85,7 +85,8 @@ namespace OscSimpl.Examples
         public GameObject PC;
 
         public string Map_MaxParticles;
-        public string MAP_Color;
+        public string Map_Color;
+        public string Map_KBGround;
 
         public string Map_FXrotation2;
 
@@ -93,7 +94,7 @@ namespace OscSimpl.Examples
       //  public string Map_B5;
      //   public string Map_B6;
 
-        public string Map_KBGround;
+
 
         float map(float Val, float minInit, float MaxInit, float MinFinal, float MaxFinal)
         {
@@ -191,8 +192,9 @@ namespace OscSimpl.Examples
             _oscIn.Map(Map_PointcloudPosXY,EventPointCloudPosXY);   // debug PC Position
             _oscIn.MapFloat(Map_PointCloudPosZ, EventPointCloudPosZ);   // debug PC Position
 
+            _oscIn.MapFloat(Map_MaxParticles, EventMaxParticles);
+            _oscIn.MapFloat(Map_Color, EventColor);
             _oscIn.MapFloat(Map_KBGround, EventKBGround);         // Debug Param01
-            //_oscIn.MapFloat(Map_ChangeDebug2, EventDebug2);
         }
 
 		void OnDisable()
@@ -223,8 +225,8 @@ namespace OscSimpl.Examples
             float f2;
             if (message.TryGet(0, out f1) && message.TryGet(1, out f2))
             {
-                PosXY.x = map(f1, 0, 1, -6f, 6f); 
-                PosXY.y = map(f2, 0, 1, -6f, 6f);
+                PosXY.x = map(f1, 0, 1, -7f, 5f); 
+                PosXY.y = map(f2, 0, 1, -7f, 5f);
             }
             OscPool.Recycle(message);        
         }
@@ -390,12 +392,17 @@ namespace OscSimpl.Examples
             Debug.Log("K");
         }
 
-        void EventDebug2(float value)
+        void EventColor(float value)
         {
             VisualEffect VFX = FX.GetComponent<VisualEffect>();
             VFX.SetFloat("ColorTwick", value);
         }
 
+        void EventMaxParticles(float value)
+        {
+            VisualEffect VFX = FX.GetComponent<VisualEffect>();
+            VFX.SetFloat("MaxParticles", value);
+        }
         /*    void EventFX6(float value)
             {
                 VisualEffect VFX = FX.GetComponent<VisualEffect>();

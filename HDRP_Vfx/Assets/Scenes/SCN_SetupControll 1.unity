@@ -728,7 +728,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1015357794}
-  m_RootOrder: 5
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &507150647
 MonoBehaviour:
@@ -1232,15 +1232,233 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1878371037}
-  - {fileID: 1912390831}
-  - {fileID: 2107701664}
-  - {fileID: 1331352988}
   - {fileID: 1370669919}
   - {fileID: 507150646}
   - {fileID: 1392017558}
+  - {fileID: 1190897291}
   m_Father: {fileID: 1929404667}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!1 &1190897290
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1190897291}
+  - component: {fileID: 1190897295}
+  - component: {fileID: 1190897294}
+  - component: {fileID: 1190897293}
+  - component: {fileID: 1190897292}
+  m_Layer: 0
+  m_Name: VFX_Capture
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1190897291
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190897290}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1015357794}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1190897292
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190897290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fdfea1f838247c40921a07afedde962, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Property:
+    m_Name: PositionPointCloud
+  Target: {fileID: 1837789056}
+--- !u!114 &1190897293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190897290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdafc37f32b176349b1684c4455b98e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ExecuteInEditor: 1
+  m_Bindings: []
+  m_VisualEffect: {fileID: 1190897295}
+--- !u!73398921 &1190897294
+VFXRenderer:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190897290}
+  m_Enabled: 0
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 0
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!2083052967 &1190897295
+VisualEffect:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190897290}
+  m_Enabled: 1
+  m_Asset: {fileID: 8926484042661614526, guid: 76890a0c9856f7a9093fa03b5578d585, type: 3}
+  m_InitialEventName: OnPlay
+  m_InitialEventNameOverriden: 0
+  m_StartSeed: 0
+  m_ResetSeedOnPlay: 1
+  m_PropertySheet:
+    m_Float:
+      m_Array:
+      - m_Value: 0.01
+        m_Name: Rays Opacity
+        m_Overridden: 1
+      - m_Value: 0.05
+        m_Name: Rays Width
+        m_Overridden: 1
+      - m_Value: 0.5
+        m_Name: KB_Radius
+        m_Overridden: 0
+      - m_Value: 0.3
+        m_Name: Launch
+        m_Overridden: 1
+      - m_Value: 0.01
+        m_Name: RadiusPosition
+        m_Overridden: 1
+      - m_Value: 0
+        m_Name: FallingSursaut
+        m_Overridden: 1
+      - m_Value: 0
+        m_Name: BlendSpeed
+        m_Overridden: 1
+      - m_Value: 0
+        m_Name: RadialEmission
+        m_Overridden: 1
+      - m_Value: 0
+        m_Name: MultiplySize
+        m_Overridden: 1
+      - m_Value: 0
+        m_Name: MaxParticles
+        m_Overridden: 0
+      - m_Value: 0.5
+        m_Name: LifeTimeMax
+        m_Overridden: 1
+      - m_Value: 0.7
+        m_Name: KB_PosY
+        m_Overridden: 1
+      - m_Value: 0.5
+        m_Name: KB_PosX
+        m_Overridden: 1
+    m_Vector2f:
+      m_Array:
+      - m_Value: {x: 0, y: -3.57}
+        m_Name: PositionFX
+        m_Overridden: 1
+      - m_Value: {x: 0.35, y: 3.98}
+        m_Name: KB_Position
+        m_Overridden: 1
+      - m_Value: {x: 0, y: 0}
+        m_Name: Decal
+        m_Overridden: 1
+    m_Vector3f:
+      m_Array:
+      - m_Value: {x: 0, y: 50, z: 0}
+        m_Name: HologramSource
+        m_Overridden: 1
+      - m_Value: {x: 0, y: 0, z: -1.11}
+        m_Name: Transform_position
+        m_Overridden: 1
+      - m_Value: {x: 4, y: 4, z: 4}
+        m_Name: Transform_scale
+        m_Overridden: 1
+      - m_Value: {x: 0, y: 0, z: 0}
+        m_Name: Transform_angles
+        m_Overridden: 1
+      - m_Value: {x: 0, y: 0, z: 0}
+        m_Name: Decallage
+        m_Overridden: 1
+      - m_Value: {x: 0, y: -0.4, z: 0}
+        m_Name: Attract
+        m_Overridden: 1
+      - m_Value: {x: 4, y: 4, z: 4}
+        m_Name: PositionPointCloud_scale
+        m_Overridden: 1
+      - m_Value: {x: 0, y: 0, z: 0}
+        m_Name: PositionPointCloud_position
+        m_Overridden: 1
+      - m_Value: {x: -0, y: 0, z: 0}
+        m_Name: PositionPointCloud_angles
+        m_Overridden: 1
+    m_Vector4f:
+      m_Array: []
+    m_Uint:
+      m_Array:
+      - m_Value: 12
+        m_Name: Rays Reduction
+        m_Overridden: 1
+    m_Int:
+      m_Array:
+      - m_Value: 10000
+        m_Name: Nbr_Particles
+        m_Overridden: 1
+    m_Matrix4x4f:
+      m_Array: []
+    m_AnimationCurve:
+      m_Array: []
+    m_Gradient:
+      m_Array: []
+    m_NamedObject:
+      m_Array: []
+    m_Bool:
+      m_Array: []
 --- !u!1 &1231980885
 GameObject:
   m_ObjectHideFlags: 0
@@ -1636,156 +1854,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1331352987
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1331352988}
-  - component: {fileID: 1331352990}
-  - component: {fileID: 1331352989}
-  m_Layer: 0
-  m_Name: VFX_Falling (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1331352988
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1331352987}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1015357794}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!73398921 &1331352989
-VFXRenderer:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1331352987}
-  m_Enabled: 0
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 0
-  m_LightProbeUsage: 0
-  m_ReflectionProbeUsage: 0
-  m_RayTracingMode: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 0}
-  - {fileID: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!2083052967 &1331352990
-VisualEffect:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1331352987}
-  m_Enabled: 1
-  m_Asset: {fileID: 8926484042661614526, guid: 4118009e83dfea94bbb34401857cf8a6, type: 3}
-  m_InitialEventName: OnPlay
-  m_InitialEventNameOverriden: 0
-  m_StartSeed: 0
-  m_ResetSeedOnPlay: 1
-  m_PropertySheet:
-    m_Float:
-      m_Array:
-      - m_Value: 0.01
-        m_Name: Rays Opacity
-        m_Overridden: 1
-      - m_Value: 0.05
-        m_Name: Rays Width
-        m_Overridden: 1
-      - m_Value: 8
-        m_Name: KB_Radius
-        m_Overridden: 1
-      - m_Value: 0.01
-        m_Name: Launch
-        m_Overridden: 1
-      - m_Value: 0.01
-        m_Name: RadiusPosition
-        m_Overridden: 1
-      - m_Value: 0
-        m_Name: FallingSursaut
-        m_Overridden: 1
-    m_Vector2f:
-      m_Array: []
-    m_Vector3f:
-      m_Array:
-      - m_Value: {x: 0, y: 50, z: 0}
-        m_Name: HologramSource
-        m_Overridden: 1
-      - m_Value: {x: 0, y: 0, z: -1.11}
-        m_Name: Transform_position
-        m_Overridden: 1
-      - m_Value: {x: 4, y: 4, z: 4}
-        m_Name: Transform_scale
-        m_Overridden: 1
-      - m_Value: {x: 0, y: 0, z: 0}
-        m_Name: Transform_angles
-        m_Overridden: 1
-      - m_Value: {x: 0, y: 0, z: 4}
-        m_Name: Decallage
-        m_Overridden: 1
-      - m_Value: {x: 0, y: -0.4, z: 0}
-        m_Name: Attract
-        m_Overridden: 1
-    m_Vector4f:
-      m_Array: []
-    m_Uint:
-      m_Array:
-      - m_Value: 12
-        m_Name: Rays Reduction
-        m_Overridden: 1
-    m_Int:
-      m_Array:
-      - m_Value: 10000
-        m_Name: Nbr_Particles
-        m_Overridden: 1
-    m_Matrix4x4f:
-      m_Array: []
-    m_AnimationCurve:
-      m_Array: []
-    m_Gradient:
-      m_Array: []
-    m_NamedObject:
-      m_Array: []
-    m_Bool:
-      m_Array: []
 --- !u!1 &1370669918
 GameObject:
   m_ObjectHideFlags: 0
@@ -1818,7 +1886,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1015357794}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!73398921 &1370669920
 VFXRenderer:
@@ -2020,7 +2088,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1392017558
 Transform:
   m_ObjectHideFlags: 0
@@ -2033,7 +2101,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1015357794}
-  m_RootOrder: 6
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1392017559
 MonoBehaviour:
@@ -2063,8 +2131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ExecuteInEditor: 1
-  m_Bindings:
-  - {fileID: 1392017559}
+  m_Bindings: []
   m_VisualEffect: {fileID: 1392017562}
 --- !u!73398921 &1392017561
 VFXRenderer:
@@ -2073,7 +2140,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1392017557}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -2154,6 +2221,12 @@ VisualEffect:
         m_Overridden: 0
       - m_Value: 0.5
         m_Name: LifeTimeMax
+        m_Overridden: 1
+      - m_Value: 0.7
+        m_Name: KB_PosY
+        m_Overridden: 1
+      - m_Value: 0.5
+        m_Name: KB_PosX
         m_Overridden: 1
     m_Vector2f:
       m_Array:
@@ -3064,7 +3137,7 @@ MonoBehaviour:
   Map_B3: /b3
   Map_Radio: /anim
   CenterRotation: {fileID: 1015357793}
-  FX: {fileID: 1392017557}
+  FX: {fileID: 1370669918}
   Map_EncodRotateFX: /fxRotation
   FXRotationValue: 0
   Map_FxAngle: 
@@ -3086,9 +3159,9 @@ MonoBehaviour:
   PointCloudPosZ: 0
   PC: {fileID: 1837789055}
   Map_MaxParticles: /2/change1
-  MAP_Color: /2/change2
-  Map_FXrotation2: /2/encoderFx
+  Map_Color: /2/change2
   Map_KBGround: /2/change3
+  Map_FXrotation2: /2/encoderFx
 --- !u!1 &1808408910
 GameObject:
   m_ObjectHideFlags: 0
@@ -3167,158 +3240,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 142405782}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1912390828
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1912390831}
-  - component: {fileID: 1912390830}
-  - component: {fileID: 1912390829}
-  m_Layer: 0
-  m_Name: VFX_Falling
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!73398921 &1912390829
-VFXRenderer:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1912390828}
-  m_Enabled: 0
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 0
-  m_LightProbeUsage: 0
-  m_ReflectionProbeUsage: 0
-  m_RayTracingMode: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!2083052967 &1912390830
-VisualEffect:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1912390828}
-  m_Enabled: 1
-  m_Asset: {fileID: 8926484042661614526, guid: f05f27fa1429ada4bb775ff6290f25a3, type: 3}
-  m_InitialEventName: OnPlay
-  m_InitialEventNameOverriden: 0
-  m_StartSeed: 0
-  m_ResetSeedOnPlay: 1
-  m_PropertySheet:
-    m_Float:
-      m_Array:
-      - m_Value: 0.01
-        m_Name: Rays Opacity
-        m_Overridden: 1
-      - m_Value: 0.05
-        m_Name: Rays Width
-        m_Overridden: 1
-      - m_Value: 6
-        m_Name: KB_Radius
-        m_Overridden: 1
-      - m_Value: 0.01
-        m_Name: Launch
-        m_Overridden: 1
-      - m_Value: 0.01
-        m_Name: RadiusPosition
-        m_Overridden: 1
-      - m_Value: 0
-        m_Name: FallingSursaut
-        m_Overridden: 1
-      - m_Value: 0
-        m_Name: BlendSpeed
-        m_Overridden: 1
-      - m_Value: 400000
-        m_Name: MaxEmition
-        m_Overridden: 1
-    m_Vector2f:
-      m_Array: []
-    m_Vector3f:
-      m_Array:
-      - m_Value: {x: 0, y: 50, z: 0}
-        m_Name: HologramSource
-        m_Overridden: 1
-      - m_Value: {x: 0, y: 0, z: -4.5}
-        m_Name: Transform_position
-        m_Overridden: 1
-      - m_Value: {x: 4, y: 4, z: 4}
-        m_Name: Transform_scale
-        m_Overridden: 1
-      - m_Value: {x: 0, y: 0, z: 0}
-        m_Name: Transform_angles
-        m_Overridden: 1
-      - m_Value: {x: 0, y: 0, z: 4}
-        m_Name: Decallage
-        m_Overridden: 1
-    m_Vector4f:
-      m_Array: []
-    m_Uint:
-      m_Array:
-      - m_Value: 12
-        m_Name: Rays Reduction
-        m_Overridden: 1
-    m_Int:
-      m_Array:
-      - m_Value: 10000
-        m_Name: Nbr_Particles
-        m_Overridden: 1
-    m_Matrix4x4f:
-      m_Array: []
-    m_AnimationCurve:
-      m_Array: []
-    m_Gradient:
-      m_Array: []
-    m_NamedObject:
-      m_Array: []
-    m_Bool:
-      m_Array: []
---- !u!4 &1912390831
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1912390828}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1015357794}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1929404662
 GameObject:
   m_ObjectHideFlags: 0
@@ -3575,150 +3496,6 @@ Transform:
   m_Father: {fileID: 599232399}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2107701663
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2107701664}
-  - component: {fileID: 2107701666}
-  - component: {fileID: 2107701665}
-  m_Layer: 0
-  m_Name: VFX_Falling (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &2107701664
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2107701663}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1015357794}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!73398921 &2107701665
-VFXRenderer:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2107701663}
-  m_Enabled: 0
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 0
-  m_LightProbeUsage: 0
-  m_ReflectionProbeUsage: 0
-  m_RayTracingMode: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 0}
-  - {fileID: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!2083052967 &2107701666
-VisualEffect:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2107701663}
-  m_Enabled: 1
-  m_Asset: {fileID: 8926484042661614526, guid: 4118009e83dfea94bbb34401857cf8a6, type: 3}
-  m_InitialEventName: OnPlay
-  m_InitialEventNameOverriden: 0
-  m_StartSeed: 0
-  m_ResetSeedOnPlay: 1
-  m_PropertySheet:
-    m_Float:
-      m_Array:
-      - m_Value: 0.01
-        m_Name: Rays Opacity
-        m_Overridden: 1
-      - m_Value: 0.05
-        m_Name: Rays Width
-        m_Overridden: 1
-      - m_Value: 5
-        m_Name: KB_Radius
-        m_Overridden: 1
-      - m_Value: 0.01
-        m_Name: Launch
-        m_Overridden: 1
-      - m_Value: 0.01
-        m_Name: RadiusPosition
-        m_Overridden: 1
-      - m_Value: 0
-        m_Name: FallingSursaut
-        m_Overridden: 1
-    m_Vector2f:
-      m_Array: []
-    m_Vector3f:
-      m_Array:
-      - m_Value: {x: 0, y: 50, z: 0}
-        m_Name: HologramSource
-        m_Overridden: 1
-      - m_Value: {x: 0, y: 0, z: -1.11}
-        m_Name: Transform_position
-        m_Overridden: 1
-      - m_Value: {x: 4, y: 4, z: 4}
-        m_Name: Transform_scale
-        m_Overridden: 1
-      - m_Value: {x: 0, y: 0, z: 0}
-        m_Name: Transform_angles
-        m_Overridden: 1
-    m_Vector4f:
-      m_Array: []
-    m_Uint:
-      m_Array:
-      - m_Value: 12
-        m_Name: Rays Reduction
-        m_Overridden: 1
-    m_Int:
-      m_Array:
-      - m_Value: 10000
-        m_Name: Nbr_Particles
-        m_Overridden: 1
-    m_Matrix4x4f:
-      m_Array: []
-    m_AnimationCurve:
-      m_Array: []
-    m_Gradient:
-      m_Array: []
-    m_NamedObject:
-      m_Array: []
-    m_Bool:
-      m_Array: []
 --- !u!1 &2114993351
 GameObject:
   m_ObjectHideFlags: 0
