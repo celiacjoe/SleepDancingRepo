@@ -8748,7 +8748,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 180, y: 5}
+  m_UIPosition: {x: 287, y: -105}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:

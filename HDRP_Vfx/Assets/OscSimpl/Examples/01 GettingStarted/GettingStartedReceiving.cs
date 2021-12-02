@@ -60,6 +60,7 @@ namespace OscSimpl.Examples
         public float FXRotationValue;
         public string Map_FxAngle;
         public float FXAngleValue;
+        public string Map_Encoder;
 
         public string Map_SmoothRotationFX;
 
@@ -85,7 +86,8 @@ namespace OscSimpl.Examples
         public GameObject PC;
 
         public string Map_MaxParticles;
-        public string MAP_Color;
+        public string Map_Color;
+        public string Map_KBGround;
 
         public string Map_FXrotation2;
 
@@ -93,7 +95,7 @@ namespace OscSimpl.Examples
       //  public string Map_B5;
      //   public string Map_B6;
 
-        public string Map_KBGround;
+
 
         float map(float Val, float minInit, float MaxInit, float MinFinal, float MaxFinal)
         {
@@ -157,6 +159,9 @@ namespace OscSimpl.Examples
             Quaternion RotationFXtarget = Quaternion.Euler(0, FXRotationValue, 0);
             CenterRotation.transform.rotation = Quaternion.Slerp(CenterRotation.transform.rotation, RotationFXtarget, Time.deltaTime * SmoothRotFX);
 
+           // Quaternion R = Quaternion.Euler(0, FXAngleValue, 0);
+          //  SwitchSetupReference.transform.rotation = Quaternion.Slerp(SwitchSetupReference.transform.rotation, R, Time.deltaTime * SmoothRotFX);
+
         }
 
         void OnEnable()
@@ -181,7 +186,7 @@ namespace OscSimpl.Examples
             _oscIn.MapFloat(Map_Change3, EventFX3);                 // FX Param03
             _oscIn.MapFloat(Map_Change4, EventFX4);                 // FX Param04
             _oscIn.MapFloat(Map_Change5, EventFX5);                 // FX Param05
-            // _oscIn.MapFloat(Map_Change6, EventFX6);                 // FX Param06
+             _oscIn.MapFloat(Map_Encoder, EventEncoder);                 // encoder
 
 
             _oscIn.MapFloat(Map_KBPosX, EventKBposX);               // debug KB posX
@@ -191,8 +196,9 @@ namespace OscSimpl.Examples
             _oscIn.Map(Map_PointcloudPosXY,EventPointCloudPosXY);   // debug PC Position
             _oscIn.MapFloat(Map_PointCloudPosZ, EventPointCloudPosZ);   // debug PC Position
 
+            _oscIn.MapFloat(Map_MaxParticles, EventMaxParticles);
+            _oscIn.MapFloat(Map_Color, EventColor);
             _oscIn.MapFloat(Map_KBGround, EventKBGround);         // Debug Param01
-            //_oscIn.MapFloat(Map_ChangeDebug2, EventDebug2);
         }
 
 		void OnDisable()
@@ -223,8 +229,8 @@ namespace OscSimpl.Examples
             float f2;
             if (message.TryGet(0, out f1) && message.TryGet(1, out f2))
             {
-                PosXY.x = map(f1, 0, 1, -6f, 6f); 
-                PosXY.y = map(f2, 0, 1, -6f, 6f);
+                PosXY.x = map(f1, 0, 1, -7f, 5f); 
+                PosXY.y = map(f2, 0, 1, -7f, 5f);
             }
             OscPool.Recycle(message);        
         }
@@ -279,7 +285,6 @@ namespace OscSimpl.Examples
             {
                 Animator AC_CamMovement = CenterRotation.GetComponent<Animator>();
                 AC.SetTrigger("RotationZ");
-                Debug.Log("AAAAA");
                 // AC.SetTrigger("travers");
             }
         }
@@ -345,6 +350,13 @@ namespace OscSimpl.Examples
             VFX.SetFloat("Turbulence", value);
         }
 
+
+        void EventEncoder(float value)
+        {
+            FXAngleValue = map(value, 0, 1, 0, 360);
+            //CamRotationValue = map(value, 0, 1, 0, 360);
+        }
+
         /// ---- Debug
 
         void EventKBposX(float value)
@@ -380,22 +392,25 @@ namespace OscSimpl.Examples
         void EventPointCloudPosZ(float value)
         {
             PointCloudPosZ = map(value, 0, 1, -3, 8);
-            Debug.Log("OK PC Z");
         }
 
         void EventKBGround(float value)
         {
             VisualEffect VFX = FX.GetComponent<VisualEffect>();
             VFX.SetFloat("KB_Ground", value);
-            Debug.Log("K");
         }
 
-        void EventDebug2(float value)
+        void EventColor(float value)
         {
             VisualEffect VFX = FX.GetComponent<VisualEffect>();
             VFX.SetFloat("ColorTwick", value);
         }
 
+        void EventMaxParticles(float value)
+        {
+            VisualEffect VFX = FX.GetComponent<VisualEffect>();
+            VFX.SetFloat("MaxParticles", value);
+        }
         /*    void EventFX6(float value)
             {
                 VisualEffect VFX = FX.GetComponent<VisualEffect>();
