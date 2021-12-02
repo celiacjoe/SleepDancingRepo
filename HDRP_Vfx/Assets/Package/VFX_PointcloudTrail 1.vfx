@@ -399,11 +399,7 @@ VisualEffectResource:
       float Rate, float deltaTime) /*mode:OverTime clampToOne:True */\n{\n    rateCount_b
       += deltaTime * Rate;\n    uint count = floor(rateCount_b);\n    rateCount_b
       = frac(rateCount_b);\n    eventCount = count;\n    eventCount = min(eventCount,1);\n   
-      \n}\nvoid KillAABox_0(float3 position, inout bool alive, float3 box_center,
-      float3 box_size) /*mode:Solid */\n{\n    \n    float3 dir = position - box_center;\n   
-      float3 absDir = abs(dir);\n    float3 size = box_size * 0.5f;\n    bool collision
-      = all(absDir <= size);\n    if (collision)\n        alive = false;\n}\nvoid
-      EulerIntegration(inout float3 position, float3 velocity, float deltaTime)\n{\n   
+      \n}\nvoid EulerIntegration(inout float3 position, float3 velocity, float deltaTime)\n{\n   
       position += velocity * deltaTime;\n}\nvoid Age(inout float age, float deltaTime)\n{\n   
       age += deltaTime;\n}\nvoid Reap(float age, float lifetime, inout bool alive)\n{\n   
       if(age > lifetime) { alive = false; }\n}\n\n\r\n\r\n[numthreads(NB_THREADS_PER_GROUP,1,1)]\r\nvoid
@@ -429,12 +425,11 @@ VisualEffectResource:
       (float)2, (float)2, (float)4, (float)0.545497775, (float)1, (int)1, deltaTime_a);\n\t\t\t}\n\t\t\t{\n\t\t\t   
       attributes.eventCount = 0u;\n\t\t\t    GPUEventRate_1( /*inout */attributes.rateCount_b, 
       /*inout */attributes.eventCount, (float)150000, deltaTime_a);\n\t\t\t    eventCount_a
-      += attributes.eventCount;\n\t\t\t}\n\t\t\t{\n\t\t\t    KillAABox_0(attributes.position, 
-      /*inout */attributes.alive, float3(0, 0, 0), float3(1, 1, 1));\n\t\t\t}\n\t\t\tEulerIntegration(
-      /*inout */attributes.position, attributes.velocity, deltaTime_a);\n\t\t\tAge(
-      /*inout */attributes.age, deltaTime_a);\n\t\t\tReap(attributes.age, attributes.lifetime, 
-      /*inout */attributes.alive);\n\t\t\t\n\r\n\r\n\t\t\tif (attributes.alive)\r\n\t\t\t{\r\n\t\t\t\tattributeBuffer.Store3((index
-      * 0xC + 0x0) << 2,asuint(attributes.position));\n\t\t\t\tattributeBuffer.Store3((index
+      += attributes.eventCount;\n\t\t\t}\n\t\t\tEulerIntegration( /*inout */attributes.position,
+      attributes.velocity, deltaTime_a);\n\t\t\tAge( /*inout */attributes.age, deltaTime_a);\n\t\t\tReap(attributes.age,
+      attributes.lifetime,  /*inout */attributes.alive);\n\t\t\t\n\r\n\r\n\t\t\tif
+      (attributes.alive)\r\n\t\t\t{\r\n\t\t\t\tattributeBuffer.Store3((index * 0xC
+      + 0x0) << 2,asuint(attributes.position));\n\t\t\t\tattributeBuffer.Store3((index
       * 0xC + 0x4) << 2,asuint(attributes.velocity));\n\t\t\t\tattributeBuffer.Store((index
       * 0xC + 0x7) << 2,asuint(attributes.rateCount_b));\n\t\t\t\tattributeBuffer.Store((index
       * 0xC + 0x8) << 2,uint(attributes.stripAlive));\n\t\t\t\tattributeBuffer.Store((index
@@ -472,12 +467,10 @@ VisualEffectResource:
       (float)2, (float)2, (float)4, (float)0.545497775, (float)1, (int)1, deltaTime_a);\n\t\t}\n\t\t{\n\t\t   
       attributes.eventCount = 0u;\n\t\t    GPUEventRate_1( /*inout */attributes.rateCount_b, 
       /*inout */attributes.eventCount, (float)150000, deltaTime_a);\n\t\t    eventCount_a
-      += attributes.eventCount;\n\t\t}\n\t\t{\n\t\t    KillAABox_0(attributes.position, 
-      /*inout */attributes.alive, float3(0, 0, 0), float3(1, 1, 1));\n\t\t}\n\t\tEulerIntegration(
-      /*inout */attributes.position, attributes.velocity, deltaTime_a);\n\t\tAge(
-      /*inout */attributes.age, deltaTime_a);\n\t\tReap(attributes.age, attributes.lifetime, 
-      /*inout */attributes.alive);\n\t\t\n\r\n\t\tattributeBuffer.Store3((index *
-      0xC + 0x0) << 2,asuint(attributes.position));\n\t\tattributeBuffer.Store((index
+      += attributes.eventCount;\n\t\t}\n\t\tEulerIntegration( /*inout */attributes.position,
+      attributes.velocity, deltaTime_a);\n\t\tAge( /*inout */attributes.age, deltaTime_a);\n\t\tReap(attributes.age,
+      attributes.lifetime,  /*inout */attributes.alive);\n\t\t\n\r\n\t\tattributeBuffer.Store3((index
+      * 0xC + 0x0) << 2,asuint(attributes.position));\n\t\tattributeBuffer.Store((index
       * 0xC + 0x3) << 2,uint(attributes.alive));\n\t\tattributeBuffer.Store3((index
       * 0xC + 0x4) << 2,asuint(attributes.velocity));\n\t\tattributeBuffer.Store((index
       * 0xC + 0x7) << 2,asuint(attributes.rateCount_b));\n\t\tattributeBuffer.Store((index
@@ -11956,7 +11949,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 1729, y: 1255}
+  m_UIPosition: {x: 1884, y: 1231}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -13787,7 +13780,7 @@ MonoBehaviour:
   m_InputSlots:
   - {fileID: 8926484042661615316}
   m_OutputSlots: []
-  m_Disabled: 0
+  m_Disabled: 1
   mode: 0
 --- !u!114 &8926484042661615316
 MonoBehaviour:
@@ -14128,7 +14121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 2094.2449, y: 1515.3999}
+  m_UIPosition: {x: 2058, y: 1095}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -14468,7 +14461,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 1894, y: 1538}
+  m_UIPosition: {x: 1865, y: 1115}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:

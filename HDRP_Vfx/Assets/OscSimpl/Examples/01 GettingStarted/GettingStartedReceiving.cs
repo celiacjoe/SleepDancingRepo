@@ -93,8 +93,7 @@ namespace OscSimpl.Examples
       //  public string Map_B5;
      //   public string Map_B6;
 
-        public string Map_ChangeDebug1;
-        public string Map_ChangeDebug2;
+        public string Map_KBGround;
 
         float map(float Val, float minInit, float MaxInit, float MinFinal, float MaxFinal)
         {
@@ -141,7 +140,7 @@ namespace OscSimpl.Examples
             Camera CamPersTop2 = CameraPersTop2.GetComponent<Camera>();
             CamPersTop2.fieldOfView = newFOV;
             Camera CamPersbot3 = CameraPersBot3.GetComponent<Camera>();
-            CamPersTop2.fieldOfView = newFOV;
+            CamPersbot3.fieldOfView = newFOV;
             Camera CamPersTop = CameraPersTop.GetComponent<Camera>();
             CamPersTop.fieldOfView = newFOV;
 
@@ -192,8 +191,8 @@ namespace OscSimpl.Examples
             _oscIn.Map(Map_PointcloudPosXY,EventPointCloudPosXY);   // debug PC Position
             _oscIn.MapFloat(Map_PointCloudPosZ, EventPointCloudPosZ);   // debug PC Position
 
-            _oscIn.MapFloat(Map_ChangeDebug1, EventDebug1);         // Debug Param01
-            _oscIn.MapFloat(Map_ChangeDebug2, EventDebug2);
+            _oscIn.MapFloat(Map_KBGround, EventKBGround);         // Debug Param01
+            //_oscIn.MapFloat(Map_ChangeDebug2, EventDebug2);
         }
 
 		void OnDisable()
@@ -384,10 +383,11 @@ namespace OscSimpl.Examples
             Debug.Log("OK PC Z");
         }
 
-        void EventDebug1(float value)
+        void EventKBGround(float value)
         {
             VisualEffect VFX = FX.GetComponent<VisualEffect>();
-            VFX.SetFloat("MaxParticles", value);
+            VFX.SetFloat("KB_Ground", value);
+            Debug.Log("K");
         }
 
         void EventDebug2(float value)

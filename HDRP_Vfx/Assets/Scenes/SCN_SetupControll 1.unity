@@ -715,7 +715,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &507150646
 Transform:
   m_ObjectHideFlags: 0
@@ -758,8 +758,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ExecuteInEditor: 1
-  m_Bindings:
-  - {fileID: 507150647}
+  m_Bindings: []
   m_VisualEffect: {fileID: 507150650}
 --- !u!73398921 &507150649
 VFXRenderer:
@@ -768,7 +767,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 507150645}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -2021,7 +2020,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1392017558
 Transform:
   m_ObjectHideFlags: 0
@@ -2064,7 +2063,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ExecuteInEditor: 1
-  m_Bindings: []
+  m_Bindings:
+  - {fileID: 1392017559}
   m_VisualEffect: {fileID: 1392017562}
 --- !u!73398921 &1392017561
 VFXRenderer:
@@ -2073,7 +2073,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1392017557}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -2628,7 +2628,6 @@ GameObject:
   - component: {fileID: 1667216633}
   - component: {fileID: 1667216632}
   - component: {fileID: 1667216635}
-  - component: {fileID: 1667216636}
   m_Layer: 0
   m_Name: CamOrtho
   m_TagString: MainCamera
@@ -2805,24 +2804,6 @@ MonoBehaviour:
       data1: 0
       data2: 0
   defaultFrameSettings: 0
---- !u!114 &1667216636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1667216631}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45099d624c1e6c14e9514f4e5ea1ed9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spoutName: Spout Sender
-  _keepAlpha: 0
-  _captureMethod: 0
-  _sourceCamera: {fileID: 0}
-  _sourceTexture: {fileID: 0}
-  _resources: {fileID: 11400000, guid: f449ebbe2051c2e4d993eaa773a410de, type: 2}
 --- !u!1 &1779401737
 GameObject:
   m_ObjectHideFlags: 0
@@ -3083,7 +3064,7 @@ MonoBehaviour:
   Map_B3: /b3
   Map_Radio: /anim
   CenterRotation: {fileID: 1015357793}
-  FX: {fileID: 507150645}
+  FX: {fileID: 1392017557}
   Map_EncodRotateFX: /fxRotation
   FXRotationValue: 0
   Map_FxAngle: 
@@ -3104,11 +3085,10 @@ MonoBehaviour:
   Map_PointCloudPosZ: /2/PCHauteur
   PointCloudPosZ: 0
   PC: {fileID: 1837789055}
-  Map_MaxParticles: 
-  MAP_Color: 
+  Map_MaxParticles: /2/change1
+  MAP_Color: /2/change2
   Map_FXrotation2: /2/encoderFx
-  Map_ChangeDebug1: /2/change1
-  Map_ChangeDebug2: /2/change2
+  Map_KBGround: /2/change3
 --- !u!1 &1808408910
 GameObject:
   m_ObjectHideFlags: 0
