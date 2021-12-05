@@ -229,8 +229,8 @@ namespace OscSimpl.Examples
             float f2;
             if (message.TryGet(0, out f1) && message.TryGet(1, out f2))
             {
-                PosXY.x = map(f1, 0, 1, -7f, 5f); 
-                PosXY.y = map(f2, 0, 1, -7f, 5f);
+                PosXY.x = map(f1, 0, 1, -7f, 2f); 
+                PosXY.y = map(f2, 0, 1, -11f, 3f);
             }
             OscPool.Recycle(message);        
         }
